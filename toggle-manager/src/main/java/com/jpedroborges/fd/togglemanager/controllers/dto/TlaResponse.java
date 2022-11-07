@@ -10,7 +10,6 @@ import java.util.List;
 public class TlaResponse {
     private String name;
     private String internalName;
-    private int numberOfInstances;
     private List<ToggleResponse> toggles;
 
 }

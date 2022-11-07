@@ -12,7 +12,8 @@ public class ToToggleModel implements Converter<Toggle, com.jpedroborges.fd.togg
         if (convertableObject == null) return null;
         return com.jpedroborges.fd.togglemanager.models.Toggle.builder()
                 .name(convertableObject.getName())
-                .status(convertableObject.isStatus())
+                .status(convertableObject.getStatus())
+                .master(convertableObject.isMaster())
                 .tags(convertableObject.getTags())
                 .build();
     }

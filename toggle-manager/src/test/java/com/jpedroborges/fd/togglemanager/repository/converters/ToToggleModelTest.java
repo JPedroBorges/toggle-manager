@@ -20,11 +20,13 @@ class ToToggleModelTest {
         original.setName("toggleName");
         original.setTags(newArrayList("a", "b"));
         original.setStatus(false);
+        original.setMaster(true);
 
         Toggle result = victim.convert(original);
         assertEquals("toggleName", result.getName());
         assertEquals(newArrayList("a", "b"), result.getTags());
-        assertFalse(result.isStatus());
+        assertFalse(result.getStatus());
+        assertTrue(result.isMaster());
     }
 
     @Test

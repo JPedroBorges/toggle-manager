@@ -69,7 +69,6 @@ class ToTlaResponseTest {
                 .build();
 
         TlaResponse response = victim.convert(original);
-        assertEquals(0, response.getNumberOfInstances());
         assertEquals("abc123", response.getInternalName());
         assertEquals("abc", response.getName());
         assertEquals(transformedToggle, response.getToggles());

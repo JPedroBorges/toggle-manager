@@ -16,7 +16,8 @@ import java.util.List;
 public class Toggle {
     @Id
     private String name;
-    private boolean status;
+    private Boolean status;
+    private boolean master;
     @ElementCollection(targetClass = String.class)
     private List<String> tags;
 }

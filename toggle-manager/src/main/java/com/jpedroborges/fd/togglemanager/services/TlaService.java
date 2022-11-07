@@ -33,7 +33,7 @@ public class TlaService {
     public void reloadTlas() {
         Iterable<com.jpedroborges.fd.togglemanager.repository.dto.Tla> loadedTlas = tlaRepository.findAll();
         int counter = 0;
-        for (Object ignored : loadedTlas) {
+        for (com.jpedroborges.fd.togglemanager.repository.dto.Tla ignored : loadedTlas) {
             counter++;
         }
 

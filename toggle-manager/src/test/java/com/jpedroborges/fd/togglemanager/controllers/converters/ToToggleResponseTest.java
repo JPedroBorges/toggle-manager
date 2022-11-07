@@ -20,12 +20,14 @@ class ToToggleResponseTest {
         Toggle original = Toggle.builder()
                 .name("toggleName")
                 .status(false)
+                .master(true)
                 .tags(newArrayList("a", "b"))
                 .build();
 
         ToggleResponse response = victim.convert(original);
         assertEquals("toggleName", response.getName());
-        assertFalse(response.isStatus());
+        assertFalse(response.getStatus());
+        assertTrue(response.isMaster());
         assertEquals(newArrayList("a", "b"), response.getTags());
     }
 

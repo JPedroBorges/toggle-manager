@@ -30,7 +30,6 @@ public class ToTlaResponse implements Converter<Tla, TlaResponse> {
         return TlaResponse.builder()
                 .name(convertableObject.getName())
                 .internalName(convertableObject.getInternalName())
-                .numberOfInstances(0)
                 .toggles(toggles)
                 .build();
     }

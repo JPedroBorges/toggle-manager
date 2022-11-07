@@ -58,7 +58,6 @@ class ToListTlaResponseTest {
                 .tags(newArrayList("a", "b"))
                 .build();
         TlaResponse transformed = TlaResponse.builder()
-                .numberOfInstances(0)
                 .internalName("abc123")
                 .name("abc")
                 .toggles(newArrayList(transformedToggle1, transformedToggle2))

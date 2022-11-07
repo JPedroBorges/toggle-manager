@@ -9,6 +9,7 @@ import java.util.List;
 @Data
 public class ToggleResponse {
     private String name;
-    private boolean status;
+    private Boolean status;
+    private boolean master;
     private List<String> tags;
 }

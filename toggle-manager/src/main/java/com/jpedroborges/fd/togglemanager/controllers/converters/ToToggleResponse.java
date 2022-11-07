@@ -12,7 +12,8 @@ public class ToToggleResponse implements Converter<Toggle, ToggleResponse> {
         if (convertableObject == null) return null;
         return ToggleResponse.builder()
                 .name(convertableObject.getName())
-                .status(convertableObject.isStatus())
+                .status(convertableObject.getStatus())
+                .master(convertableObject.isMaster())
                 .tags(convertableObject.getTags())
                 .build();
     }

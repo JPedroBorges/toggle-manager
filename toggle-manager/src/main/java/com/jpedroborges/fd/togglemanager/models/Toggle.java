@@ -11,6 +11,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class Toggle {
     private String name;
-    private boolean status;
+    private Boolean status;
+    private boolean master;
     private List<String> tags;
 }
