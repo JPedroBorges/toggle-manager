@@ -19,7 +19,7 @@ public class ToTlaModel implements Converter<Tla, com.jpedroborges.fd.togglemana
     @NonNull
     private final TlaConfigurationProperties tlaConfiguration;
     @NonNull
-    private final ToToggleModel toggleConverter;
+    private final Converter<Toggle, com.jpedroborges.fd.togglemanager.models.Toggle> toggleConverter;
 
     @Override
     public com.jpedroborges.fd.togglemanager.models.Tla convert(Tla convertableObject) {

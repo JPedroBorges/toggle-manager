@@ -1,30 +1,31 @@
 package com.jpedroborges.fd.togglemanager.repository.converters;
 
+import com.jpedroborges.fd.togglemanager.BaseTypesForTest;
 import com.jpedroborges.fd.togglemanager.models.Toggle;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-class ToToggleModelTest {
+@ExtendWith(MockitoExtension.class)
+class ToToggleModelTest  extends BaseTypesForTest  {
 
-    @Autowired
     private ToToggleModel victim;
+
+    @BeforeEach
+    void setUp() {
+        victim = new ToToggleModel();
+    }
 
     @Test
     public void shouldConvert() {
-        com.jpedroborges.fd.togglemanager.repository.dto.Toggle original = new com.jpedroborges.fd.togglemanager.repository.dto.Toggle();
-        original.setName("toggleName");
-        original.setTags(newArrayList("a", "b"));
-        original.setStatus(false);
-        original.setMaster(true);
+        Toggle result = victim.convert(toggleDTO());
 
-        Toggle result = victim.convert(original);
-        assertEquals("toggleName", result.getName());
-        assertEquals(newArrayList("a", "b"), result.getTags());
+        assertEquals("toggleName0", result.getName());
+        assertEquals(newArrayList("a"), result.getTags());
         assertFalse(result.getStatus());
         assertTrue(result.isMaster());
     }

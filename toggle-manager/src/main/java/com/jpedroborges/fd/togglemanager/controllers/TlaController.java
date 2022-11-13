@@ -1,8 +1,8 @@
 package com.jpedroborges.fd.togglemanager.controllers;
 
-import com.jpedroborges.fd.togglemanager.controllers.converters.ToListTlaResponse;
 import com.jpedroborges.fd.togglemanager.controllers.dto.TlaResponse;
 import com.jpedroborges.fd.togglemanager.models.Tla;
+import com.jpedroborges.fd.togglemanager.models.converters.Converter;
 import com.jpedroborges.fd.togglemanager.services.TlaService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ public class TlaController {
     @NonNull
     private final TlaService service;
     @NonNull
-    private final ToListTlaResponse converter;
+    private final Converter<List<Tla>, List<TlaResponse>> converter;
 
     @GetMapping()
     public @ResponseBody ResponseEntity<List<TlaResponse>> getTlas() {

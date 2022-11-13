@@ -17,7 +17,7 @@ import static com.google.common.collect.Lists.newArrayList;
 @Component
 public class ToTlaResponse implements Converter<Tla, TlaResponse> {
     @NonNull
-    private final ToToggleResponse toggleConverter;
+    private final Converter<Toggle, ToggleResponse> toggleConverter;
 
     @Override
     public TlaResponse convert(Tla convertableObject) {

@@ -15,7 +15,7 @@ import static com.google.common.collect.Lists.newArrayList;
 @RequiredArgsConstructor
 public class ToListTlaResponse implements Converter<List<Tla>, List<TlaResponse>> {
     @NonNull
-    private final ToTlaResponse tlaConverter;
+    private final Converter<Tla, TlaResponse> tlaConverter;
 
     @Override
     public List<TlaResponse> convert(List<Tla> convertableObject) {

@@ -14,7 +14,7 @@ import static com.google.common.collect.Lists.newArrayList;
 @RequiredArgsConstructor
 public class ToListTlaModel implements Converter<Iterable<Tla>, List<com.jpedroborges.fd.togglemanager.models.Tla>> {
     @NonNull
-    private final ToTlaModel serviceConverter;
+    private final Converter<Tla, com.jpedroborges.fd.togglemanager.models.Tla> serviceConverter;
 
     @Override
     public List<com.jpedroborges.fd.togglemanager.models.Tla> convert(Iterable<Tla> convertableObject) {

@@ -1,75 +1,38 @@
 package com.jpedroborges.fd.togglemanager.controllers.converters;
 
+import com.jpedroborges.fd.togglemanager.BaseTypesForTest;
 import com.jpedroborges.fd.togglemanager.controllers.dto.TlaResponse;
-import com.jpedroborges.fd.togglemanager.controllers.dto.ToggleResponse;
-import com.jpedroborges.fd.togglemanager.models.Tla;
-import com.jpedroborges.fd.togglemanager.models.Toggle;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-
-import javax.annotation.PostConstruct;
-import java.util.List;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
-class ToListTlaResponseTest {
+@ExtendWith(MockitoExtension.class)
+public class ToListTlaResponseTest extends BaseTypesForTest {
 
-    List<TlaResponse> transformedList;
-    List<Tla> originalList;
-    @Autowired
     private ToListTlaResponse victim;
-    @MockBean
+    @Mock
     private ToTlaResponse converter;
 
-    @PostConstruct
-    void setUp() {
-        Toggle originalToggle1 = Toggle.builder()
-                .name("toggleName1")
-                .status(false)
-                .tags(newArrayList("a"))
-                .build();
-        Toggle originalToggle2 = Toggle.builder()
-                .name("toggleName2")
-                .status(false)
-                .tags(newArrayList("a", "b"))
-                .build();
-        Tla original = Tla.builder()
-                .internalName("abc123")
-                .toggles(newArrayList(originalToggle1, originalToggle2))
-                .name("abc")
-                .urlPattern("abc123-{XHY}")
-                .build();
-        originalList = newArrayList(original);
-
-        ToggleResponse transformedToggle1 = ToggleResponse.builder()
-                .name("toggleName1")
-                .status(false)
-                .tags(newArrayList("a"))
-                .build();
-        ToggleResponse transformedToggle2 = ToggleResponse.builder()
-                .name("toggleName2")
-                .status(false)
-                .tags(newArrayList("a", "b"))
-                .build();
-        TlaResponse transformed = TlaResponse.builder()
-                .internalName("abc123")
-                .name("abc")
-                .toggles(newArrayList(transformedToggle1, transformedToggle2))
-                .build();
-        transformedList = newArrayList(transformed);
-
-        when(converter.convert(original)).thenReturn(transformed);
+    @BeforeEach
+    public void setUp() {
+        victim = new ToListTlaResponse(converter);
     }
 
     @Test
     public void shouldConvert() {
-        assertEquals(transformedList, victim.convert(originalList));
+        TlaResponse tla = tlaResponse();
+
+        when(converter.convert(any())).thenReturn(tla);
+
+        assertEquals(newArrayList(tla), victim.convert(newArrayList(tlaModel())));
     }
 
     @Test
@@ -81,5 +44,4 @@ class ToListTlaResponseTest {
     public void shouldNotConvert() {
         assertNull(victim.convert(null));
     }
-
 }

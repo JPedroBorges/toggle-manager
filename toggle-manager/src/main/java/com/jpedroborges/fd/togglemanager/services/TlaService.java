@@ -1,8 +1,8 @@
 package com.jpedroborges.fd.togglemanager.services;
 
 import com.jpedroborges.fd.togglemanager.models.Tla;
+import com.jpedroborges.fd.togglemanager.models.converters.Converter;
 import com.jpedroborges.fd.togglemanager.repository.TlaRepository;
-import com.jpedroborges.fd.togglemanager.repository.converters.ToListTlaModel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ public class TlaService {
     @NonNull
     private TlaRepository tlaRepository;
     @NonNull
-    private ToListTlaModel tlaConverter;
+    private Converter<Iterable<com.jpedroborges.fd.togglemanager.repository.dto.Tla>, List<Tla>> tlaConverter;
     private List<Tla> tla;
 
 
